@@ -9,6 +9,17 @@ function submitTitle() {
 
 
     xhr.send();
+    
+    
+    xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        displayNicely(this.responseText);
+    }
+    else if (this.status == 404) {
+            document.getElementById("weatherData").innerHTML = "<h2>Movie not found! Please try again.</h2>";
+        }
+};
+
 }
 
 
@@ -40,14 +51,6 @@ document.getElementById("movies").innerHTML = output;
 
 
 
-xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        displayNicely(this.responseText);
-    }
-    else if (this.status == 404) {
-            document.getElementById("weatherData").innerHTML = "<h2>Movie not found! Please try again.</h2>";
-        }
-};
 
 
 
@@ -69,50 +72,58 @@ function getMovie(){
 
     xhr.send();
     
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            displayMovie(this.responseText);
+        }
+        
+};
+
+    
 }
 
 
 
-// function displayMovie(movie){
-//     movie = JSON.parse(movie);
-//     console.log(movie);
+function displayMovie(movie){
+    movie = JSON.parse(movie);
+    console.log(movie);
     
-//     let output = `<div class = 'row'>
-//     <div class = 'col-md-4'>
-//     <img src = '${movie.Poster}' class = 'thumbnail'>
+    let output = `<div class = 'row'>
+    <div class = 'col-md-4'>
+    <img src = '${movie.Poster}' class = 'thumbnail'>
     
-//         </div>
-//         <div class = 'col-md-8'>
-//         <h2>${movie.Title}</h2>
-//         <ul class = 'list-group'></ul>
-//         <li class = 'list-group-item'><strong>Genre:</strong> ${movie.Genre}</li>
-//         <li class = 'list-group-item'><strong>Released:</strong> ${movie.Released}</li>
-//         <li class = 'list-group-item'><strong>Rated:</strong> ${movie.Rated}</li>
-//         <li class = 'list-group-item'><strong>ImDB rating:</strong> ${movie.imdbRating}</li>
-//         <li class = 'list-group-item'><strong>Director:</strong> ${movie.Director}</li>
-//         <li class = 'list-group-item'><strong>Writer:</strong> ${movie.writer}</li>
-//         <li class = 'list-group-item'><strong>Actors:</strong> ${movie.actors}</li>
-//         </div>
-//         <div class = 'row'>
-//         <div class = 'col-md-12'>
-//         &nbsp
-//         </div>
-//         </div>
-//         <div class = 'row'>
-//         <div class = 'well'>
+        </div>
+        <div class = 'col-md-8'>
+        <h2>${movie.Title}</h2>
+        <ul class = 'list-group'></ul>
+        <li class = 'list-group-item'><strong>Genre:</strong> ${movie.Genre}</li>
+        <li class = 'list-group-item'><strong>Released:</strong> ${movie.Released}</li>
+        <li class = 'list-group-item'><strong>Rated:</strong> ${movie.Rated}</li>
+        <li class = 'list-group-item'><strong>ImDB rating:</strong> ${movie.imdbRating}</li>
+        <li class = 'list-group-item'><strong>Director:</strong> ${movie.Director}</li>
+        <li class = 'list-group-item'><strong>Writer:</strong> ${movie.writer}</li>
+        <li class = 'list-group-item'><strong>Actors:</strong> ${movie.actors}</li>
+        </div>
+        <div class = 'row'>
+        <div class = 'col-md-12'>
+        &nbsp
+        </div>
+        </div>
+        <div class = 'row'>
+        <div class = 'well'>
         
-//         <h3>Plot</h3>
-//         <h5>${movie.Plot}</h5>
-//         <hr>
-//         <a href = "http://imdb.com/title/${movie.imdbID}" target = 'blank' class = 'btn btn-primary'>View IMDB</a>
-//         <a href = "api1.html" class = "btn btn-secondary" >Go back to Search</a>
-//         </div>
-//         </div>`;
+        <h3>Plot</h3>
+        <h5>${movie.Plot}</h5>
+        <hr>
+        <a href = "http://imdb.com/title/${movie.imdbID}" target = 'blank' class = 'btn btn-primary'>View IMDB</a>
+        <a href = "api1.html" class = "btn btn-secondary" >Go back to Search</a>
+        </div>
+        </div>`;
     
     
     
-// document.getElementById("movie").innerHTML = output;   
-// }
+document.getElementById("movie").innerHTML = output;   
+}
 
 
 
@@ -127,12 +138,6 @@ function getMovie(){
 
 
 
-// xhr.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             displayMovie(this.responseText);
-//         }
-        
-// };
 
 
 
