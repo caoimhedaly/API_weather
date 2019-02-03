@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Info</title>
+     <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css" type="text/css" />
+     <link rel="stylesheet" href="style.css" type="text/css" />
+     <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+    <style type="text/css">
+    
+   
+    </style>
+</head>
+<body>
+   
+   <div class = 'container'>
+       <div class = 'navbar navbar-default'>
+           <div class = 'navbar-header'>
+               <a class = 'navbar-brand' href = 'api1.html'><h1>Movie Info</h1>
+                   
+               </a>
+           </div>
+       </div>
+     </div>   
+       <div class = 'container' style= text-align:center >
+           <div class = 'jumbotron'>
+               <h3 class = 'text-center'>Search any movie</h3>
+               <form id = 'TitleForm'>
+                   <input type='text' class = 'form-control' name="Title" id = 'searchText' placeholder = 'searchMovie'>
+               </form>
+                <button class = 'button btn-success btn-lg' id="submit" onclick="submitTitle() ">Get Movie</button>
+           </div>
+           
+       </div>
+       <div class = 'container'>
+           <div id = 'movies' class = 'row'>
+                   
+           </div>
+           
+       </div>
+        
+  
+    
+    
+
+    
+            
+            <div id = 'weatherdata'></div>
+            
+             
+                
+
+       
+       
+  <script
+     type="text/javascript" src="api1.js"></script>
+</body>
+</html>
